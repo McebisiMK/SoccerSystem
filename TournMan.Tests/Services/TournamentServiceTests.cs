@@ -4,8 +4,10 @@ using FluentAssertions;
 using NSubstitute;
 using Xunit;
 
-namespace TournMan.Tests.Services {
-    public class UnitTest1 {
+namespace TournMan.Tests.Services
+{
+    public class TournamentServiceTests
+    {
         [Fact]
         public void Save_GivenNewTournament_ShouldSave () {
             //Given

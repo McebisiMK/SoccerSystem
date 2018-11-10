@@ -12,11 +12,11 @@ namespace TournMan.Tests.Services
         {
         }
 
-        public Tournament(string v1, DateTime dateTime, string v2)
+        public Tournament(string name, DateTime startDate, string location)
         {
-            this.v1 = v1;
-            this.dateTime = dateTime;
-            this.v2 = v2;
+            this.Name = name;
+            this.StartDate = startDate;
+            this.Location = location;
         }
 
         public string Name { get; internal set; }
