@@ -34,5 +34,15 @@ namespace TournMan.Tests.Services
         {
         return tournamentRepository.FindAll();
         }
+
+        public List<Tournament> FindByName(string name)
+        {
+            return tournamentRepository.FindByName(name);
+        }
+
+        public List<Tournament> FindByLocation(string location)
+        {
+            return tournamentRepository.FindByLocation(location);
+        }
     }
 }

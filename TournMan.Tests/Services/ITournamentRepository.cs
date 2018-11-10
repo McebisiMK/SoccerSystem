@@ -6,5 +6,7 @@ namespace TournMan.Tests.Services
     {
         void Save(Tournament tournament);
         List<Tournament> FindAll();
+        List<Tournament> FindByName(string name);
+        List<Tournament> FindByLocation(string location);
     }
 }

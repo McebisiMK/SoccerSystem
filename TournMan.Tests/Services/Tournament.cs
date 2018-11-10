@@ -4,9 +4,6 @@ namespace TournMan.Tests.Services
 {
     public class Tournament
     {
-        private string v1;
-        private DateTime dateTime;
-        private string v2;
 
         public Tournament()
         {
