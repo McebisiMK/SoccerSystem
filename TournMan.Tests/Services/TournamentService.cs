@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace TournMan.Tests.Services
 {
@@ -27,6 +28,11 @@ namespace TournMan.Tests.Services
         private static bool IsValid(Tournament tournament)
         {
             return !(tournament.StartDate < DateTime.Now | string.IsNullOrEmpty(tournament.Name) | string.IsNullOrEmpty(tournament.Location));
+        }
+
+        public List<Tournament> FindAll()
+        {
+        return tournamentRepository.FindAll();
         }
     }
 }
