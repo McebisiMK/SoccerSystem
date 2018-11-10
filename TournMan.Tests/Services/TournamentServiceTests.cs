@@ -100,5 +100,38 @@ namespace TournMan.Tests.Services {
             //Then
             results.Should ().BeEquivalentTo (tournaments);
         }
+
+        [Fact]
+        public void Search_GivenExistingTournamentAndSearchByName_ShouldReturnTournament () {
+            //Given
+            var name = "Tournament 1";
+            var tournamentRepository = Substitute.For<ITournamentRepository> ();
+            var tournamentService = new TournamentService (tournamentRepository);
+            var tournaments = new List<Tournament> () {
+                new Tournament ("Tournament 1", DateTime.Now.AddMonths (-2), "Location 1")
+            };
+            tournamentRepository.FindByName (name).Returns (tournaments);
+            //When
+            var results = tournamentService.FindByName (name);
+            //Then
+            results.Should ().BeEquivalentTo (tournaments);
+
+        }
+
+        [Fact]
+        public void Search_GivenExistingTournamentAndSearchByLocation_ShouldReturnTournament () {
+            //Given
+            var Location = "Location 1";
+            var tournamentRepository = Substitute.For<ITournamentRepository> ();
+            var tournamentService = new TournamentService (tournamentRepository);
+            var tournaments = new List<Tournament> () {
+                new Tournament ("Tournament 1", DateTime.Now.AddMonths (-2), "Location 1")
+            };
+            tournamentRepository.FindByLocation (Location).Returns (tournaments);
+            //When
+            var results = tournamentService.FindByLocation (Location);
+            //Then
+            results.Should ().BeEquivalentTo (tournaments);
+        }
     }
 }
