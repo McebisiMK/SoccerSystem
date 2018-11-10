@@ -34,5 +34,10 @@ namespace TournMan.Tests.Services
         {
         return tournamentRepository.FindAll();
         }
+
+        internal List<Tournament> FindByDate(DateTime startDate)
+        {
+            return tournamentRepository.FindByDate(startDate);
+        }
     }
 }
