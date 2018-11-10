@@ -1,9 +1,13 @@
 using System;
 using System.Collections.Generic;
+using TournMan.Models;
+using TournMan.Repositories;
 
-namespace TournMan.Tests.Services {
-    internal class TournamentService {
+namespace TournMan.Services {
+    public class TournamentService {
         private ITournamentRepository tournamentRepository;
+
+        public ITournamentRepository TournamentRepository { get => tournamentRepository; set => tournamentRepository = value; }
 
         public TournamentService () { }
 
@@ -11,7 +15,7 @@ namespace TournMan.Tests.Services {
             this.tournamentRepository = tournamentRepository;
         }
 
-        internal void Save (Tournament tournament) {
+        public void Save (Tournament tournament) {
             if (IsValid (tournament)) {
                 tournamentRepository.Save (tournament);
             }
@@ -26,7 +30,7 @@ namespace TournMan.Tests.Services {
             return tournamentRepository.FindAll ();
         }
 
-        internal List<Tournament> FindByDate (DateTime startDate) {
+        public List<Tournament> FindByDate (DateTime startDate) {
             return tournamentRepository.FindByDate (startDate);
         }
         public List<Tournament> FindByName (string name) {

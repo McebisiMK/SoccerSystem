@@ -1,6 +1,6 @@
 using System;
 
-namespace TournMan.Tests.Services {
+namespace TournMan.Models {
     public class Tournament {
         public Tournament () { }
         public Tournament (string name, DateTime startDate, string location) {
