@@ -2,7 +2,7 @@ using System;
 using NSubstitute;
 using Xunit;
 
-namespace TournMan.Tests
+namespace TournMan.Tests.Services
 {
     public class UnitTest1
     {
@@ -57,6 +57,5 @@ namespace TournMan.Tests
             //Then
             tournamentRepository.DidNotReceive().Save(tournament);
         }
-
     }
 }

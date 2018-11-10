@@ -1,6 +1,6 @@
 using System;
 
-namespace TournMan.Tests
+namespace TournMan.Tests.Services
 {
     internal class TournamentService
     {
