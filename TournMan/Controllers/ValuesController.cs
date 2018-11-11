@@ -22,11 +22,13 @@ namespace TournMan.Controllers
             return service.FindAll();
         }
 
+
         // GET api/values/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpPost("find/by/name")]
+        public IEnumerable<Tournament> FindByName([FromBody]string name)
         {
-            return "value";
+            var service = new TournamentService(new TournamentRepository());
+            return service.FindByName(name);
         }
 
         // POST api/values
