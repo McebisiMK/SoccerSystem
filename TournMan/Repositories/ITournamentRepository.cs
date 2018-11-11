@@ -36,7 +36,7 @@ namespace TournMan.Repositories
 
         public List<Tournament> FindByDate(DateTime startDate)
         {
-           string sql = $"select * from tournament where startdate = '{startDate}';";
+            string sql = $"select * from tournament where startdate = '{startDate}';";
             var connectionString = "Data Source=LAPTOP-MCEBISI\\SQLEXPRESS01;Integrated Security=True;Initial Catalog=Tournament";
             using (var connection = new SqlConnection(connectionString))
             {
