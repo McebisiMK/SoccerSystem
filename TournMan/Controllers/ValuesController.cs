@@ -18,7 +18,7 @@ namespace TournMan.Controllers
         public IEnumerable<Tournament> Get()
         {
             // return new string[] { "value1", "value2" };
-            var service = new TournamentService(new TournamentRepository() );
+            var service = new TournamentService(new TournamentRepository());
             return service.FindAll();
         }
 
@@ -31,8 +31,10 @@ namespace TournMan.Controllers
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody]string value)
+        public void Post([FromBody]Tournament tournament)
         {
+            var service = new TournamentService(new TournamentRepository());
+            service.Save(tournament);
         }
 
         // PUT api/values/5

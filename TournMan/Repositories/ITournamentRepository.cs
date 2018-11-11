@@ -9,7 +9,7 @@ namespace TournMan.Repositories
 {
     public interface ITournamentRepository
     {
-        void Save(Tournament tournament);
+        int Save(Tournament tournament);
         List<Tournament> FindAll();
         List<Tournament> FindByName(string name);
         List<Tournament> FindByLocation(string location);
@@ -49,9 +49,15 @@ namespace TournMan.Repositories
             throw new NotImplementedException();
         }
 
-        public void Save(Tournament tournament)
+        public int Save(Tournament tournament)
         {
-            throw new NotImplementedException();
+            string sql = "Insert into Tournament values (@Name, @Location,@StartDate);";
+            var connectionString = "Data Source=LAPTOP-MCEBISI\\SQLEXPRESS01;Integrated Security=True;Initial Catalog=Tournament";
+            using (var connection = new SqlConnection(connectionString))
+            {
+                Console.WriteLine(sql);
+                return connection.Execute(sql, tournament);
+            }
         }
     }
 }
