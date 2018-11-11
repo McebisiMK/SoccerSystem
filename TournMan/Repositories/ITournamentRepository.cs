@@ -41,7 +41,13 @@ namespace TournMan.Repositories
 
         public List<Tournament> FindByLocation(string location)
         {
-            throw new NotImplementedException();
+            List<Tournament> tournaments;
+            var connectionString = "Data Source=LAPTOP-MCEBISI\\SQLEXPRESS01;Integrated Security=True";
+            using (var connection = new SqlConnection(connectionString))
+            {
+                tournaments = connection.Query<Tournament>($"SELECT * FROM Tournament.dbo.Tournament where location = '{location}'").ToList();
+            }
+            return tournaments;
         }
 
         public List<Tournament> FindByName(string name)
