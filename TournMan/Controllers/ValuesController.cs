@@ -10,7 +10,7 @@ using TournMan.Services;
 namespace TournMan.Controllers
 {
     [Route("api/[controller]")]
-    public class ValuesController : Controller
+    public class TournamentController : Controller
     {
         private ITournamentRepository tournamentRepository;
         // GET api/values
