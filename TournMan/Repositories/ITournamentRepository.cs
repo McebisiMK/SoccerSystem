@@ -36,7 +36,13 @@ namespace TournMan.Repositories
 
         public List<Tournament> FindByDate(DateTime startDate)
         {
-            throw new NotImplementedException();
+           string sql = $"select * from tournament where startdate = '{startDate}';";
+            var connectionString = "Data Source=LAPTOP-MCEBISI\\SQLEXPRESS01;Integrated Security=True;Initial Catalog=Tournament";
+            using (var connection = new SqlConnection(connectionString))
+            {
+                Console.WriteLine(sql);
+                return connection.Query<Tournament>(sql).ToList();
+            }
         }
 
         public List<Tournament> FindByLocation(string location)
