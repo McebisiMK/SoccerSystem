@@ -23,10 +23,12 @@ namespace TournMan.Controllers
         }
 
         // GET api/values/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet("{year}/{month}/{day}")]
+        public List<Tournament> Get(int year,int month,int day)
         {
-            return "value";
+            var date = new DateTime(year,month,day);
+            var service = new TournamentService(new TournamentRepository());
+            return service.FindByDate(date);
         }
 
         // POST api/values
