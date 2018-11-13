@@ -1,6 +1,7 @@
 
 
 using System.Collections.Generic;
+using FluentAssertions;
 using NSubstitute;
 using TournMan.Models;
 using TournMan.Repositories;
@@ -9,7 +10,7 @@ using Xunit;
 
 namespace TournMan.Tests.Services
 {
-    public  class TournamentTeams
+    public class TournamentTeams
     {
 
         [Fact]
@@ -59,6 +60,43 @@ namespace TournMan.Tests.Services
             teamService.Save(team);
             //Then
             teamRepository.DidNotReceive().Save(team);
+        }
+
+        [Fact]
+        public void Search_GivenExistingTeamAndSearchByName_ShouldReturnTeam()
+        {
+            //Given
+            var name = "Mcera fc";
+            var teamRepository = Substitute.For<ITeamRepository>();
+            var teamService = new TeamService(teamRepository);
+            var team = new List<Team>()
+            {
+              new Team("Mcera fc","Mcera","Mceraz")
+            };
+            teamRepository.FindByName(name).Returns(team);
+
+            //When
+            var results = teamService.FindByName(name);
+            //Then
+            results.Should().BeEquivalentTo(team);
+        }
+
+        [Fact]
+        public void Search_GivenExistingTeamAndSearchByCoach_ShouldReturnTeam()
+        {
+            //Given
+            var coach = "Mcera";
+            var teamRepository = Substitute.For<ITeamRepository>();
+            var teamService = new TeamService(teamRepository);
+            var team = new List<Team>()
+            {
+                new Team("Mcera fc","Mcera","Mceraz")
+            };
+            teamRepository.FindByCoach(coach).Returns(team);
+            //When
+            var results = teamService.FindByCoach(coach);
+            //Then
+            results.Should().BeEquivalentTo(team);
         }
     }
 

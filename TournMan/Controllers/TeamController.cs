@@ -21,5 +21,19 @@ namespace TournMan.Controllers
             var teamService = new TeamService(new TeamRepository());
             teamService.Save(team);
         }
+
+         [HttpPost("find/by/name")]
+        public IEnumerable<Team> FindByName([FromBody]string name)
+        {
+            var teamService = new TeamService(new TeamRepository());
+            return teamService.FindByName(name);
+        }
+
+         [HttpPost("find/by/coach")]
+        public IEnumerable<Team> FindByCoach([FromBody]string coach)
+        {
+            var teamService = new TeamService(new TeamRepository());
+            return teamService.FindByCoach(coach);
+        }
     }
 }

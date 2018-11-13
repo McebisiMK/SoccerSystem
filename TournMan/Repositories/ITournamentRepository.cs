@@ -18,6 +18,7 @@ namespace TournMan.Repositories
 
     public class TournamentRepository : ITournamentRepository
     {
+        List<Tournament> tournaments;
         private string connectionString = "Data Source=LAPTOP-MCEBISI\\SQLEXPRESS01;Integrated Security=True;Initial Catalog=Tournament";
 
         public TournamentRepository()
@@ -26,7 +27,6 @@ namespace TournMan.Repositories
 
         public List<Tournament> FindAll()
         {
-            List<Tournament> tournaments;
             using (var connection = new SqlConnection(connectionString))
             {
                 tournaments = connection.Query<Tournament>("SELECT * FROM Tournament.dbo.Tournament").ToList();
@@ -46,7 +46,6 @@ namespace TournMan.Repositories
 
         public List<Tournament> FindByLocation(string location)
         {
-            List<Tournament> tournaments;
             using (var connection = new SqlConnection(connectionString))
             {
                 tournaments = connection.Query<Tournament>($"SELECT * FROM Tournament.dbo.Tournament where location = '{location}'").ToList();
@@ -56,7 +55,6 @@ namespace TournMan.Repositories
 
         public List<Tournament> FindByName(string name)
         {
-            List<Tournament> tournaments;
             using (var connection = new SqlConnection(connectionString))
             {
                 tournaments = connection.Query<Tournament>($"SELECT * FROM Tournament.dbo.Tournament where name = '{name}'").ToList();
