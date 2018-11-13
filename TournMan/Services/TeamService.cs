@@ -4,7 +4,7 @@ using TournMan.Repositories;
 
 namespace TournMan.Services
 {
-    internal class TeamService : ITeamService
+    public class TeamService : ITeamService
     {
         private ITeamRepository teamRepository;
 
@@ -19,7 +19,16 @@ namespace TournMan.Services
 
         public int Save(Team team)
         {
-            return this.teamRepository.Save(team);
+            if (IsValid(team))
+            {
+                return this.teamRepository.Save(team);
+            }
+            return 0;
+        }
+
+        private static bool IsValid(Team team)
+        {
+            return !(string.IsNullOrEmpty(team.Name) | string.IsNullOrEmpty(team.Coach) | string.IsNullOrEmpty(team.Captain));
         }
     }
 }

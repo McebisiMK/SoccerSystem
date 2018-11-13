@@ -1,5 +1,5 @@
-namespace TournMan.Models
+/*namespace TournMan.Models
 {
-    public class Player { }
+   // public class Player { }
 
-}
+}*/
