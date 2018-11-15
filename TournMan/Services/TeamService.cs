@@ -27,6 +27,11 @@ namespace TournMan.Services
             return 0;
         }
 
+        public List<Team> FindAll()
+        {
+            return teamRepository.FindAll();
+        }
+
         public List<Team> FindByName(string name)
         {
             return teamRepository.FindByName(name);

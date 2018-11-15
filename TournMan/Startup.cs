@@ -10,34 +10,31 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using TournMan.Repositories;
 
-namespace TournMan
-{
-    public class Startup
-    {
-        public Startup(IConfiguration configuration)
-        {
+namespace TournMan {
+    public class Startup {
+        public Startup (IConfiguration configuration) {
             Configuration = configuration;
         }
 
         public IConfiguration Configuration { get; }
 
-
         // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
-        {
-            services.AddTransient<ITournamentRepository, TournamentRepository>();
-            services.AddMvc();
+        public void ConfigureServices (IServiceCollection services) {
+            services.AddCors();
+            services.AddTransient<ITournamentRepository, TournamentRepository> ();
+            services.AddMvc ();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
-        {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
+        public void Configure (IApplicationBuilder app, IHostingEnvironment env) {
+            if (env.IsDevelopment ()) {
+                app.UseDeveloperExceptionPage ();
             }
 
-            app.UseMvc();
+            app.UseCors (builder =>
+                builder.WithOrigins ("http://localhost:4200")
+                .WithMethods("GET,POST,OPTIONS"));
+            app.UseMvc ();
         }
     }
 }

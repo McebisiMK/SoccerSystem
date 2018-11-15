@@ -8,5 +8,6 @@ namespace TournMan.Services
         int Save(Team team);
         List<Team> FindByName( string name);
         List<Team> FindByCoach(string coach);
+        List<Team> FindAll();
     }
 }

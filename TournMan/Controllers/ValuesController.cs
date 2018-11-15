@@ -18,7 +18,7 @@ namespace TournMan.Controllers
         public IEnumerable<Tournament> Get()
         {
             // return new string[] { "value1", "value2" };
-            var service = new TournamentService(new TournamentRepository());
+            var service = new TournamentService(new TournamentListRepository());
             return service.FindAll();
         }
 
@@ -27,14 +27,14 @@ namespace TournMan.Controllers
         [HttpPost("find/by/name")]
         public IEnumerable<Tournament> FindByName([FromBody]string name)
         {
-            var service = new TournamentService(new TournamentRepository());
+            var service = new TournamentService(new TournamentListRepository());
             return service.FindByName(name);
         }
 
         [HttpPost("find/by/location")]
         public IEnumerable<Tournament> FindByLocation([FromBody]string location)
         {
-            var service = new TournamentService(new TournamentRepository());
+            var service = new TournamentService(new TournamentListRepository());
             return service.FindByLocation(location);
         }
 
@@ -42,7 +42,7 @@ namespace TournMan.Controllers
         public List<Tournament> Get(int year, int month, int day)
         {
             var date = new DateTime(year, month, day);
-            var service = new TournamentService(new TournamentRepository());
+            var service = new TournamentService(new TournamentListRepository());
             return service.FindByDate(date);
         }
 
@@ -50,7 +50,9 @@ namespace TournMan.Controllers
         [HttpPost]
         public void Post([FromBody]Tournament tournament)
         {
-            var service = new TournamentService(new TournamentRepository());
+             Console.WriteLine("Saving... \n");
+             Console.WriteLine("Saving..."+tournament.Name);
+            var service = new TournamentService(new TournamentListRepository());
             service.Save(tournament);
         }
 

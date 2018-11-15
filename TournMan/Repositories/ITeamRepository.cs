@@ -12,6 +12,7 @@ namespace TournMan.Repositories
         int Save(Team team);
         List<Team> FindByName(string name);
         List<Team> FindByCoach(string coach);
+        List<Team> FindAll();
     }
 
     public class TeamRepository : ITeamRepository
@@ -45,6 +46,11 @@ namespace TournMan.Repositories
                 team = connection.Query<Team>($"Select * from Tournament.dbo.Team where coach = '{coach}'").ToList();
             }
             return team;
+        }
+
+        public List<Team> FindAll()
+        {
+            throw new NotImplementedException();
         }
     }
 }
