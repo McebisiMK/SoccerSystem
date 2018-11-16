@@ -24,9 +24,11 @@ namespace TournMan.Controllers
 
 
         // GET api/values/5
-        [HttpPost("find/by/name")]
-        public IEnumerable<Tournament> FindByName([FromBody]string name)
+        [HttpGet("find/by/name/{name}")]
+        public IEnumerable<Tournament> FindByName(string name)
         {
+
+            Console.WriteLine(name +" Is the name");
             var service = new TournamentService(new TournamentListRepository());
             return service.FindByName(name);
         }
