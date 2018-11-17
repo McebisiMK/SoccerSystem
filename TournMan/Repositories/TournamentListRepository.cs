@@ -6,10 +6,10 @@ using TournMan.Models;
 namespace TournMan.Repositories {
     public class TournamentListRepository : ITournamentRepository {
         private static List<Tournament> tournaments= new List<Tournament> () {
-                new Tournament("Ingqula Entertianment",DateTime.Now.AddMonths(-2),"Mqanduli"),
-                new Tournament("OR Thambo",DateTime.Now.AddMonths(3),"Ngqwabeni"),
-                new Tournament("Imbizana",DateTime.Now.AddMonths(1),"Bisi"),
-                new Tournament("Xy z",DateTime.Now.AddMonths(-5),"EmaDikazini")
+                new Tournament(1,"Ingqula Entertianment",DateTime.Now.AddMonths(-2),"Mqanduli"),
+                new Tournament(2,"OR Thambo",DateTime.Now.AddMonths(3),"Ngqwabeni"),
+                new Tournament(3,"Imbizana",DateTime.Now.AddMonths(1),"Bisi"),
+                new Tournament(4,"Xy z",DateTime.Now.AddMonths(-5),"EmaDikazini")
              };
 
         public TournamentListRepository () {
@@ -20,6 +20,11 @@ namespace TournMan.Repositories {
 
         public List<Tournament> FindByDate (DateTime startDate) {
             return tournaments.Where (a => a.StartDate == startDate).ToList ();
+        }
+
+        public List<Tournament> FindById(int tournamentId)
+        {
+            return tournaments.Where (a => a.Id == tournamentId).ToList ();
         }
 
         public List<Tournament> FindByLocation (string location) {

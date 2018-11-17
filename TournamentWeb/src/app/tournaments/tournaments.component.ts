@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
@@ -8,12 +9,18 @@ import { HttpClient } from '@angular/common/http';
 })
 export class TournamentsComponent implements OnInit {
 tournaments: any;
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
+  loadDetails(id) {
+    this.router.navigate(['/tournament/details/', id]);
+
+  }
   ngOnInit(): void {
-    this.http.get("http://localhost:5000/api/tournament").subscribe(resp => {
+    this.http.get('http://localhost:5000/api/tournament').subscribe(resp => {
       this.tournaments = resp;
-    },e=>{});
+    }, e => {});
+
+
   }
 
 }

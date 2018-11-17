@@ -50,7 +50,11 @@ namespace TournMan.Repositories
 
         public List<Team> FindAll()
         {
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(connectionString))
+            {
+                team = connection.Query<Team>("SELECT * FROM Tournament.dbo.Team").ToList();
+            }
+            return team;
         }
     }
 }

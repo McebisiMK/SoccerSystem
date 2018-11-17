@@ -6,8 +6,9 @@ namespace TournMan.Models
     public class Tournament
     {
         public Tournament() { }
-        public Tournament(string name, DateTime startDate, string location)
+        public Tournament(int id, string name, DateTime startDate, string location)
         {
+            this.Id = id;
             this.Name = name;
             this.StartDate = startDate;
             this.Location = location;
@@ -15,11 +16,13 @@ namespace TournMan.Models
 
         [JsonProperty("name")]
         public string Name { get; internal set; }
-        
+
         [JsonProperty("location")]
         public string Location { get; internal set; }
 
         [JsonProperty("startDate")]
         public DateTime StartDate { get; internal set; }
+        [JsonProperty("id")]
+        public int Id { get; internal set; }
     }
 }

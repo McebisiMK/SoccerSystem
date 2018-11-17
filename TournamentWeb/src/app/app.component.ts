@@ -10,9 +10,6 @@ export class AppComponent implements OnInit {
 
   constructor(private http: HttpClient) { }
   tournaments: any;
-  
-
-
   ngOnInit(): void {
   }
 }

@@ -14,6 +14,7 @@ namespace TournMan.Repositories
         List<Tournament> FindByName(string name);
         List<Tournament> FindByLocation(string location);
         List<Tournament> FindByDate(DateTime startDate);
+         List<Tournament> FindById(int tournamentId);
     }
 
     public class TournamentRepository : ITournamentRepository
@@ -42,6 +43,15 @@ namespace TournMan.Repositories
                 Console.WriteLine(sql);
                 return connection.Query<Tournament>(sql).ToList();
             }
+        }
+
+        public List<Tournament> FindById(int tournamentId)
+        {
+            using (var connection = new SqlConnection(connectionString))
+            {
+                tournaments = connection.Query<Tournament>($"SELECT * FROM Tournament.dbo.Tournament where id = '{tournamentId}'").ToList();
+            }
+            return tournaments;
         }
 
         public List<Tournament> FindByLocation(string location)

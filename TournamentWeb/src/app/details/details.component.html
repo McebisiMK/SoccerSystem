@@ -1,7 +1,28 @@
+<div class="detail">
+  <div>
+    <div class="row">
+      <div class="col-sm-6">Name</div>
+      <div class="col-sm-6">{{ tournament[0].name }}</div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">Location</div>
+      <div class="col-sm-6">{{ tournament[0].location }}</div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">Start Date</div>
+      <div class="col-sm-6">{{ tournament[0].startDate | date: "short" }}</div>
+    </div>
+  </div>
+</div>
 
 
-{{tournament[0].name}}
-
-{{tournament[0].location}}
-
-{{tournament[0].startDate}}
+<hr/>
+<h3> Add team To Tournament </h3>
+<div>
+  <select class="form-control">
+    <option *ngFor="let team of teams">{{team.name}} ~ {{team.coach}}</option>
+  </select>
+  <input type="text" class="form-control">
+</div>
