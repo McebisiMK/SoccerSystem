@@ -41,6 +41,7 @@ namespace TournMan.Services
         {
             return tournamentRepository.FindByDate(startDate);
         }
+
         public List<Tournament> FindByName(string name)
         {
             return tournamentRepository.FindByName(name);
@@ -49,6 +50,11 @@ namespace TournMan.Services
         public List<Tournament> FindByLocation(string location)
         {
             return tournamentRepository.FindByLocation(location);
+        }
+
+        public List<Tournament> FindById(int tournamentId)
+        {
+            return tournamentRepository.FindById(tournamentId);
         }
     }
 }

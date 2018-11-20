@@ -9,18 +9,23 @@ import { HttpClient } from '@angular/common/http';
 })
 export class DetailsComponent implements OnInit {
   tournament: Object;
+  teams: any = [];
 
   constructor(private http: HttpClient, private activeRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
 
     this.activeRoute.params.subscribe(params => {
-      if (params['name']) {
-        let detailName = params['name'];
-        this.http.get("http://localhost:5000/api/tournament/find/by/name/"+detailName).subscribe(resp => {
+      if (params['id']) {
+        const detailId = params['id'];
+        this.http.get(`http://localhost:5000/api/tournament/find/by/id/${detailId}`).subscribe(resp => {
           this.tournament = resp;
-        }, e => { });
+         }, e => { });
       }
-    })
+    });
+
+    this.http.get('http://localhost:5000/api/team').subscribe(resp => {
+      this.teams = resp;
+    }, e => {});
   }
 }

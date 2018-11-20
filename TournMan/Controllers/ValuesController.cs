@@ -17,8 +17,7 @@ namespace TournMan.Controllers
         [HttpGet]
         public IEnumerable<Tournament> Get()
         {
-            // return new string[] { "value1", "value2" };
-            var service = new TournamentService(new TournamentListRepository());
+            var service = new TournamentService(new TournamentRepository());
             return service.FindAll();
         }
 
@@ -28,15 +27,21 @@ namespace TournMan.Controllers
         public IEnumerable<Tournament> FindByName(string name)
         {
 
-            Console.WriteLine(name +" Is the name");
-            var service = new TournamentService(new TournamentListRepository());
+            var service = new TournamentService(new TournamentRepository());
             return service.FindByName(name);
+        }
+
+         [HttpGet("find/by/id/{id}")]
+        public IEnumerable<Tournament> FindById(int id)
+        {
+            var service = new TournamentService(new TournamentRepository());
+            return service.FindById(id);
         }
 
         [HttpPost("find/by/location")]
         public IEnumerable<Tournament> FindByLocation([FromBody]string location)
         {
-            var service = new TournamentService(new TournamentListRepository());
+            var service = new TournamentService(new TournamentRepository());
             return service.FindByLocation(location);
         }
 
@@ -44,7 +49,7 @@ namespace TournMan.Controllers
         public List<Tournament> Get(int year, int month, int day)
         {
             var date = new DateTime(year, month, day);
-            var service = new TournamentService(new TournamentListRepository());
+            var service = new TournamentService(new TournamentRepository());
             return service.FindByDate(date);
         }
 
@@ -52,9 +57,7 @@ namespace TournMan.Controllers
         [HttpPost]
         public void Post([FromBody]Tournament tournament)
         {
-             Console.WriteLine("Saving... \n");
-             Console.WriteLine("Saving..."+tournament.Name);
-            var service = new TournamentService(new TournamentListRepository());
+            var service = new TournamentService(new TournamentRepository());
             service.Save(tournament);
         }
 

@@ -18,7 +18,7 @@ namespace TournMan.Tests.Services
         public void Save_GivenNewTournament_ShouldSave()
         {
             //Given
-            var tournament = new Tournament ( "Municapal Tournament",DateTime.Now.AddMonths(1), "Mqanduli" );
+            var tournament = new Tournament(1,"Municapal Tournament", DateTime.Now.AddMonths(1), "Mqanduli");
             var tournamentRepository = Substitute.For<ITournamentRepository>();
             var tournamentService = new TournamentService(tournamentRepository);
             //When
@@ -31,7 +31,7 @@ namespace TournMan.Tests.Services
         public void Save_GivenTournamentDateIsInThePast_ShouldNotSave()
         {
             //Given
-            var tournament = new Tournament ("Municapal Tournament", DateTime.Now.AddMonths(-1),  "Mqanduli" );
+            var tournament = new Tournament(1,"Municapal Tournament", DateTime.Now.AddMonths(-1), "Mqanduli");
             var tournamentRepository = Substitute.For<ITournamentRepository>();
             var tournamentService = new TournamentService(tournamentRepository);
             //When
@@ -44,7 +44,7 @@ namespace TournMan.Tests.Services
         public void Save_GivenNoTournamentName_ShouldNotSave()
         {
             //Given
-            var tournament = new Tournament ( "",  DateTime.Now.AddMonths(1), "Mqanduli" );
+            var tournament = new Tournament(1,"", DateTime.Now.AddMonths(1), "Mqanduli");
             var tournamentRepository = Substitute.For<ITournamentRepository>();
             var tournamentService = new TournamentService(tournamentRepository);
             //When
@@ -57,7 +57,7 @@ namespace TournMan.Tests.Services
         public void Save_GivenNoTournamentLocation_ShouldNotSave()
         {
             //Given
-            var tournament = new Tournament ("Municapal Tournament", DateTime.Now.AddMonths(1), "" );
+            var tournament = new Tournament(1,"Municapal Tournament", DateTime.Now.AddMonths(1), "");
             var tournamentRepository = Substitute.For<ITournamentRepository>();
             var tournamentService = new TournamentService(tournamentRepository);
             //When
@@ -73,9 +73,9 @@ namespace TournMan.Tests.Services
             var tournamentRepository = Substitute.For<ITournamentRepository>();
             var tournamentService = new TournamentService(tournamentRepository);
             var tournaments = new List<Tournament>() {
-                new Tournament ("Tournament 1", DateTime.Now.AddMonths (-2), "Location 1"),
-                new Tournament ("Tournament 2", DateTime.Now.AddMonths (2), "Location 2"),
-                new Tournament ("Tournament 3", DateTime.Now.AddYears (2), "Location 3")
+                new Tournament (1,"Tournament 1", DateTime.Now.AddMonths (-2), "Location 1"),
+                new Tournament (2,"Tournament 2", DateTime.Now.AddMonths (2), "Location 2"),
+                new Tournament (3,"Tournament 3", DateTime.Now.AddYears (2), "Location 3")
             };
             tournamentRepository.FindAll().Returns(tournaments);
             //When
@@ -104,9 +104,9 @@ namespace TournMan.Tests.Services
             var tournamentRepository = Substitute.For<ITournamentRepository>();
             var tournamentService = new TournamentService(tournamentRepository);
             var tournaments = new List<Tournament>() {
-                new Tournament ("Tournament 1", DateTime.Parse ("2018/10/18"), "Location 1"),
-                new Tournament ("Tournament 2", DateTime.Parse ("2019/12/25"), "Location 2"),
-                new Tournament ("Tournament 3", DateTime.Parse ("2016/01/01"), "Location 3")
+                new Tournament (1,"Tournament 1", DateTime.Parse ("2018/10/18"), "Location 1"),
+                new Tournament (2,"Tournament 2", DateTime.Parse ("2019/12/25"), "Location 2"),
+                new Tournament (3,"Tournament 3", DateTime.Parse ("2016/01/01"), "Location 3")
             };
             tournamentRepository.FindByDate(Arg.Any<DateTime>()).Returns(tournaments);
             //When
@@ -123,7 +123,7 @@ namespace TournMan.Tests.Services
             var tournamentRepository = Substitute.For<ITournamentRepository>();
             var tournamentService = new TournamentService(tournamentRepository);
             var tournaments = new List<Tournament>() {
-                new Tournament ("Tournament 1", DateTime.Now.AddMonths (-2), "Location 1")
+                new Tournament (1,"Tournament 1", DateTime.Now.AddMonths (-2), "Location 1")
             };
             tournamentRepository.FindByName(name).Returns(tournaments);
             //When
@@ -141,7 +141,7 @@ namespace TournMan.Tests.Services
             var tournamentRepository = Substitute.For<ITournamentRepository>();
             var tournamentService = new TournamentService(tournamentRepository);
             var tournaments = new List<Tournament>() {
-                new Tournament ("Tournament 1", DateTime.Now.AddMonths (-2), "Location 1")
+                new Tournament (1,"Tournament 1", DateTime.Now.AddMonths (-2), "Location 1")
             };
             tournamentRepository.FindByLocation(Location).Returns(tournaments);
             //When
@@ -151,14 +151,20 @@ namespace TournMan.Tests.Services
         }
 
         [Fact]
-        public void TestName()
+        public void FindById_GivenExistingTournamentAndId_ShouldReturnTournament()
         {
             //Given
-            //LAPTOP-MCEBISI\SQLEXPRESS01
-
+            var tournamentId = 1;
+            var tournamentRepository = Substitute.For<ITournamentRepository>();
+            var tournamentService = new TournamentService(tournamentRepository);
+            var tournaments = new List<Tournament>() {
+                new Tournament (1,"Tournament 1", DateTime.Now.AddMonths (-2), "Location 1")
+            };
+            tournamentRepository.FindById(tournamentId).Returns(tournaments);
             //When
-
+            var results = tournamentService.FindById(tournamentId);
             //Then
+            results.Should().BeEquivalentTo(tournaments);
         }
     }
 }
