@@ -15,14 +15,14 @@ namespace TournMan.Models
         }
 
         [JsonProperty("name")]
-        public string Name { get; internal set; }
+        public string Name { get;   set; }
 
         [JsonProperty("location")]
-        public string Location { get; internal set; }
+        public string Location { get;   set; }
 
         [JsonProperty("startDate")]
-        public DateTime StartDate { get; internal set; }
+        public DateTime StartDate { get;   set; }
         [JsonProperty("id")]
-        public int Id { get; internal set; }
+        public int Id { get;   set; }
     }
 }

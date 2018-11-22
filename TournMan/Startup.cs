@@ -9,7 +9,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using TournMan.Models;
 using TournMan.Repositories;
+using TournMan.Services;
 
 namespace TournMan
 {
@@ -33,11 +35,13 @@ namespace TournMan
                     .AllowAnyHeader()
                     .AllowCredentials());
             });
-            services.AddTransient<ITournamentRepository, TournamentRepository>();
+            
+            services.AddScoped<ITournamentRepository, TournamentPgRepository>();
+            services.AddScoped<ITournamentService, TournamentService>();
 
             services.AddEntityFrameworkNpgsql().AddDbContext<PgContext>(opt =>
             {
-                opt.UseNpgsql(Configuration.GetConnectionString("api"));
+                 opt.UseNpgsql(Configuration.GetConnectionString("pg"));
             });
             services.AddMvc();
         }

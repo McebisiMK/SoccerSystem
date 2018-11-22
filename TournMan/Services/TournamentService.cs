@@ -5,7 +5,7 @@ using TournMan.Repositories;
 
 namespace TournMan.Services
 {
-    public class TournamentService
+    public class TournamentService : ITournamentService
     {
         private ITournamentRepository tournamentRepository;
 
