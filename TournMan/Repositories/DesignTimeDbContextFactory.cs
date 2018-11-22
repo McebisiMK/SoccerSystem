@@ -18,7 +18,7 @@
 
          public PgContext CreateDbContext (string[] args) {
              var builder = new DbContextOptionsBuilder<PgContext> ();
-             builder.UseNpgsql ("User ID=postgres;Password=lizo90;Server=localhost;Port=5432; Integrated Security=true");
+             builder.UseNpgsql ("User ID=postgres;Password=lizo90;Server=localhost;Port=5432;Database=dbtest");
              return new PgContext (builder.Options);
          }
 

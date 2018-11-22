@@ -35,14 +35,14 @@ namespace TournMan
                     .AllowAnyHeader()
                     .AllowCredentials());
             });
-            
-            services.AddScoped<ITournamentRepository, TournamentPgRepository>();
-            services.AddScoped<ITournamentService, TournamentService>();
+             
+            services.AddTransient<ITournamentRepository, TournamentPgRepository>();
+            services.AddTransient<ITournamentService, TournamentService>();
 
-            services.AddEntityFrameworkNpgsql().AddDbContext<PgContext>(opt =>
-            {
-                 opt.UseNpgsql(Configuration.GetConnectionString("pg"));
-            });
+            // services.AddEntityFrameworkNpgsql().AddDbContext<PgContext>(opt =>
+            // {
+            //      opt.UseNpgsql(Configuration.GetConnectionString("pg"));
+            // });
             services.AddMvc();
         }
 
