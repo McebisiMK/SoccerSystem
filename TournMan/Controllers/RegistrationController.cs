@@ -9,6 +9,10 @@ namespace TournMan.Controllers {
     [Route ("api/[controller]")]
     public class RegistrationController : Controller {
         private IRegistrationService registrationService;
+        public RegistrationController(IRegistrationService registrationService)
+        {
+            this.registrationService = registrationService;
+        }
 
         [HttpGet]
         public IEnumerable<RegisteredTeams> Get () {
