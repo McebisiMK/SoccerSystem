@@ -19,11 +19,11 @@ namespace TournMan.Services
             return registrationRepository.FindAll();
         }
 
-        public int Register(Registration registeredTeams)
+        public int Register(Registration registration)
         {
-            if (IsValid(registeredTeams))
+            if (IsValid(registration))
             {
-                return registrationRepository.Register(registeredTeams);
+                return registrationRepository.Register(registration);
             }
             return 0;
         }

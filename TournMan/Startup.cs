@@ -32,15 +32,11 @@ namespace TournMan {
                     .AllowCredentials ());
             });
 
-            services.AddTransient<ITournamentRepository, TournamentPgRepository> ();
+            services.AddTransient<ITournamentRepository, TournamentRepository> ();
             services.AddTransient<ITournamentService, TournamentService> ();
             services.AddTransient<IRegistrationService, RegistrationService> ();
             services.AddTransient<IRegistrationRepository, RegistrationRepository> ();
 
-            // services.AddEntityFrameworkNpgsql().AddDbContext<PgContext>(opt =>
-            // {
-            //      opt.UseNpgsql(Configuration.GetConnectionString("pg"));
-            // });
             services.AddMvc ();
         }
 

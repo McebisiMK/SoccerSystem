@@ -10,41 +10,41 @@ using TournMan.Services;
 namespace TournMan.Controllers {
     [Route ("api/[controller]")]
     public class TournamentController : Controller {
-        private ITournamentService service;
+        private ITournamentService Tournamentservice;
 
-        public TournamentController (ITournamentService service) {
-            this.service = service;
+        public TournamentController (ITournamentService Tournamentservice) {
+            this.Tournamentservice = Tournamentservice;
         }
 
         [HttpGet]
         public IEnumerable<Tournament> Get () {
-            return this.service.FindAll ();
+            return this.Tournamentservice.FindAll ();
         }
 
         [HttpGet ("find/by/name/{name}")]
         public IEnumerable<Tournament> FindByName (string name) {
-            return this.service.FindByName (name);
+            return this.Tournamentservice.FindByName (name);
         }
 
         [HttpGet ("find/by/id/{id}")]
         public IEnumerable<Tournament> FindById (int id) {
-            return this.service.FindById (id);
+            return this.Tournamentservice.FindById (id);
         }
 
         [HttpPost ("find/by/location")]
         public IEnumerable<Tournament> FindByLocation ([FromBody] string location) {
-            return this.service.FindByLocation (location);
+            return this.Tournamentservice.FindByLocation (location);
         }
 
         [HttpGet ("{year}/{month}/{day}")]
         public List<Tournament> Get (int year, int month, int day) {
             var date = new DateTime (year, month, day);
-            return this.service.FindByDate (date);
+            return this.Tournamentservice.FindByDate (date);
         }
 
         [HttpPost]
         public void Post ([FromBody] Tournament tournament) {
-            this.service.Save (tournament);
+            this.Tournamentservice.Save (tournament);
         }
 
         [HttpDelete ("{id}")]
