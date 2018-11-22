@@ -9,12 +9,14 @@ import { TournamentsComponent } from './tournaments/tournaments.component';
 import { DetailsComponent } from './details/details.component';
 import { TeamsComponent } from './teams/teams.component';
 import { TeamCaptureComponent } from './team-capture/team-capture.component';
+import { RegistrationComponent } from './registration/registration.component';
 
 const routes: Route[] = [
   { path: 'capture', component: CaptureComponent },
   { path: 'addteam', component: TeamCaptureComponent },
   { path: 'tournaments', component: TournamentsComponent },
   { path: 'teams', component: TeamsComponent },
+  { path: 'registration', component: RegistrationComponent },
   { path: 'tournament/details/:id', component: DetailsComponent }
 ];
 @NgModule({
@@ -24,7 +26,8 @@ const routes: Route[] = [
     TournamentsComponent,
     DetailsComponent,
     TeamsComponent,
-    TeamCaptureComponent
+    TeamCaptureComponent,
+    RegistrationComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
