@@ -5,26 +5,19 @@ using TournMan.Models;
 using TournMan.Repositories;
 using TournMan.Services;
 
+namespace TournMan.Controllers {
+    [Route ("api/[controller]")]
+    public class RegistrationController : Controller {
+        private IRegistrationService registrationService;
 
-namespace TournMan.Controllers
-{
-    [Route("api/[controller]")]
-    public class RegistrationController : Controller
-    {
-        private IRegistrationRepository registrationRepository;
-
-         [HttpGet]
-        public IEnumerable<RegisteredTeams> Get()
-        {
-            var registrationService = new RegistrationService(new RegistrationRepository());
-            return registrationService.FindAll();
+        [HttpGet]
+        public IEnumerable<RegisteredTeams> Get () {
+            return registrationService.FindAll ();
         }
 
         [HttpPost]
-        public int Post([FromBody] RegisteredTeams registeredTeams)
-        {
-            var service = new RegistrationService(new RegistrationRepository());
-            return service.Register(registeredTeams);
+        public int Post ([FromBody] RegisteredTeams registeredTeams) {
+            return registrationService.Register (registeredTeams);
         }
     }
 }
