@@ -55,10 +55,10 @@ namespace TournMan.Controllers
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody]Tournament tournament)
+        public int Post([FromBody]Tournament tournament)
         {
             var service = new TournamentService(new TournamentRepository());
-            service.Save(tournament);
+            return service.Save(tournament);
         }
 
         // DELETE api/values/5

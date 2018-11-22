@@ -25,7 +25,6 @@ namespace TournMan.Repositories
             string sql = "Insert into Team values (@Name, @Coach,@Captain);";
             using (var connection = new SqlConnection(connectionString))
             {
-                Console.WriteLine(sql);
                 return connection.Execute(sql, team);
             }
         }

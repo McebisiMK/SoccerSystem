@@ -20,7 +20,5 @@ tournaments: any;
       this.tournaments = resp;
     }, e => {});
 
-
   }
-
 }

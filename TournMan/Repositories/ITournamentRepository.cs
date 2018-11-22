@@ -74,10 +74,9 @@ namespace TournMan.Repositories
 
         public int Save(Tournament tournament)
         {
-            string sql = "Insert into Tournament values (@Name, @Location,@StartDate);";
+            string sql = "Insert into Tournament values (@Name, @Location,@StartDate)";
             using (var connection = new SqlConnection(connectionString))
             {
-                Console.WriteLine(sql);
                 return connection.Execute(sql, tournament);
             }
         }
