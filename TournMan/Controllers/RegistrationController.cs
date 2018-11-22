@@ -15,12 +15,12 @@ namespace TournMan.Controllers {
         }
 
         [HttpGet]
-        public IEnumerable<RegisteredTeams> Get () {
+        public IEnumerable<Registration> Get () {
             return registrationService.FindAll ();
         }
 
         [HttpPost]
-        public int Post ([FromBody] RegisteredTeams registeredTeams) {
+        public int Post ([FromBody] Registration registeredTeams) {
             return registrationService.Register (registeredTeams);
         }
     }

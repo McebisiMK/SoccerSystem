@@ -9,32 +9,32 @@ namespace TournMan.Repositories
 {
     public interface IRegistrationRepository
     {
-        int Register(RegisteredTeams registeredTeams);
-        List<RegisteredTeams> FindAll();
+        int Register(Registration registeredTeams);
+        List<Registration> FindAll();
     }
 
     public class RegistrationRepository : IRegistrationRepository
     {
-        List<RegisteredTeams> registeredTeams;
+        List<Registration> registeredTeams;
         private string connectionString = "Data Source=LAPTOP-MCEBISI\\SQLEXPRESS01;Integrated Security=True;Initial Catalog=Tournament";
         public RegistrationRepository() { }
 
-        public List<RegisteredTeams> FindAll()
+        public List<Registration> FindAll()
         {
            //var sql = "Select * from Tournament.dbo.RegisteredTeams";
             using (var connection = new SqlConnection(connectionString))
             {
-                registeredTeams = connection.Query<RegisteredTeams>("Select * from Tournament.dbo.RegisteredTeams").ToList();
+                registeredTeams = connection.Query<Registration>("Select * from Tournament.dbo.TournamentRegistration").ToList();
             }
             return registeredTeams;
         }
 
-        public int Register(RegisteredTeams registeredTeams)
+        public int Register(Registration registration)
         {
-            string sql = "Insert into RegisteredTeams values (@TeamId, @Name, @Coach, @RegisteredDate, @Amount)";
+            string sql = "Insert into TournamentRegistration values (@TournamentId, @TeamId, @Amount)";
             using (var connection = new SqlConnection(connectionString))
             {
-                return connection.Execute(sql, registeredTeams);
+                return connection.Execute(sql, registration);
             }
         }
     }

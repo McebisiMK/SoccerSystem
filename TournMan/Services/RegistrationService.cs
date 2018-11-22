@@ -14,12 +14,12 @@ namespace TournMan.Services
             this.registrationRepository = registrationRepository;
         }
 
-        public List<RegisteredTeams> FindAll()
+        public List<Registration> FindAll()
         {
             return registrationRepository.FindAll();
         }
 
-        public int Register(RegisteredTeams registeredTeams)
+        public int Register(Registration registeredTeams)
         {
             if (IsValid(registeredTeams))
             {
@@ -28,7 +28,7 @@ namespace TournMan.Services
             return 0;
         }
 
-        private bool IsValid(RegisteredTeams registeringTeams)
+        private bool IsValid(Registration registeringTeams)
         {
             return !(registeringTeams.Amount < 0);
         }
