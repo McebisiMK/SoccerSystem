@@ -15,30 +15,30 @@ namespace TournMan.Tests.Services
         public void Register_GivenAnExistingTeam_ShouldRegisterTeam()
         {
             //Given
-            var RegisteringTeam = new RegisteredTeams(1, "Mcera FC", "Coach", DateTime.Now.AddMonths(1), 500.00);
+            var registration = new Registration(2, 2, 500.00);
             var registrationRepository = Substitute.For<IRegistrationRepository>();
             var registrationService = new RegistrationService(registrationRepository);
 
             //When
-            registrationService.Register(RegisteringTeam);
+            registrationService.Register(registration);
 
             //Then
-            registrationRepository.Received(1).Register(RegisteringTeam);
+            registrationRepository.Received(1).Register(registration);
         }
 
         [Fact]
         public void Register_GivenAmountIsLessThanZero_ShouldNotRegiterTeam()
         {
             //Given
-            var RegisteringTeam = new RegisteredTeams(1, "Mcera FC", "Coach", DateTime.Now.AddMonths(1), -500.00);
+            var registration = new Registration(2, 2, -500.00);
             var registrationRepository = Substitute.For<IRegistrationRepository>();
             var registrationService = new RegistrationService(registrationRepository);
 
             //When
-            registrationService.Register(RegisteringTeam);
+            registrationService.Register(registration);
 
             //Then
-            registrationRepository.DidNotReceive().Register(RegisteringTeam);
+            registrationRepository.DidNotReceive().Register(registration);
         }
 
         [Fact]
@@ -47,20 +47,20 @@ namespace TournMan.Tests.Services
             //Given
             var registrationRepository = Substitute.For<IRegistrationRepository>();
             var registrationService = new RegistrationService(registrationRepository);
-            var registeredTeams = new List<RegisteredTeams>()
+            var registration = new List<Registration>()
             {
-                new RegisteredTeams(1, "Mcera FC", "Mcera", DateTime.Now.AddMonths(1), 500.00),
-                new RegisteredTeams(2, "Lizo FC", "Lizo", DateTime.Now.AddDays(1), 500.00),
-                new RegisteredTeams(3, "Mbu FC", "Mbu", DateTime.Now.AddMonths(1), 500.00),
-                new RegisteredTeams(4, "Lake FC", "Coach", DateTime.Now.AddDays(1), 500.00)
+                new Registration(1, 1, 500.00),
+                new Registration(2, 2, 500.00),
+                new Registration(3, 3, 500.00),
+                new Registration(4, 4, 500.00)
             };
-            registrationRepository.FindAll().Returns(registeredTeams);
+            registrationRepository.FindAll().Returns(registration);
 
             //When
             var results = registrationService.FindAll();
 
             //Then
-            results.Should().BeEquivalentTo(registeredTeams);
+            results.Should().BeEquivalentTo(registration);
         }
     }
 }

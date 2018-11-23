@@ -31,10 +31,11 @@ namespace TournMan {
                     .AllowCredentials ());
             });
 
-            services.AddTransient<ITournamentRepository, TournamentPgRepository> ();
-            services.AddTransient<ITeamRepository, TeamPgRepository> ();
+            // services.AddTransient<ITournamentRepository, TournamentPgRepository> ();
+            // services.AddTransient<ITeamRepository, TeamPgRepository> ();
+            
             services.AddTransient<IRegistrationRepository, RegistrationRepository> ();
-
+            services.AddTransient<ITournamentRepository, TournamentRepository> ();
             services.AddTransient<ITournamentService, TournamentService> ();
             services.AddTransient<IRegistrationService, RegistrationService> ();
             services.AddTransient<ITeamService, TeamService> ();

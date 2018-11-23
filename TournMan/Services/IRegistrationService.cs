@@ -3,8 +3,8 @@ using TournMan.Models;
 
 namespace TournMan.Services {
     public interface IRegistrationService {
-        int Register (RegisteredTeams registeredTeams);
-        List<RegisteredTeams> FindAll ();
+        int Register (Registration registeredTeams);
+        List<Registration> FindAll ();
 
     }
 }
