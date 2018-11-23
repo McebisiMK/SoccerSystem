@@ -44,6 +44,7 @@ namespace TournMan.Controllers {
 
         [HttpPost]
         public void Post ([FromBody] Tournament tournament) {
+            Console.WriteLine("Now saving..."+tournament.Name);
             this.service.Save (tournament);
         }
 

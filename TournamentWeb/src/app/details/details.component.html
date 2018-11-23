@@ -1,5 +1,5 @@
 <div class="detail">
-  <div>
+  <div *ngIf="tournament.length >0">
     <div class="row">
       <div class="col-sm-6">Name</div>
       <div class="col-sm-6">{{ tournament[0].name }}</div>
@@ -17,23 +17,33 @@
   </div>
 </div>
 
+<div class="teams">
+  <section class="registration">
+    <div>
+      <div>
+        <div class="form-group">
+          <select class="form-control" [(ngModel)]="selectedTeamId">
+            <option value="">Select Team</option>
+            <option *ngFor="let team of teams" value="{{team.id}}">{{team.name}} ~ {{team.coach}}</option>
+          </select>
+        </div>
 
-<hr/>
-<h3> Add team To Tournament </h3>
-<div>
-  <select class="form-control">
-    <option *ngFor="let team of teams">{{team.name}} ~ {{team.coach}}</option>
-  </select>
-  <div style="width: 50%">
-    <div class="form-group">
-      <label for='team.name'>Name</label>
-      <input type="text" class="form-control" id='team.name'>
+        <div class="form-group">
+          <label for='amount'>Amount</label>
+          <input type="text" [(ngModel)]="amount" class="form-control" id='amount'>
+        </div>
+
+        <div class="form-group">
+          <input type="button" class="btn btn-primary" (click)="register()" value="Register">
+        </div>
+
+      </div>
     </div>
+  </section>
 
-    <div class="form-group">
-      <label for='team.coach'>Coach</label>
-      <input type="text" value='team.coach' class="form-control" id='team.coach'>
-    </div>
-
-  </div>
+  <section class="registered">
+    <ul *ngFor="let team of registeredTeams">
+      <li>{{team.name}}</li>
+    </ul>
+  </section>
 </div>

@@ -34,7 +34,7 @@ namespace TournMan.Repositories {
 
         public int Save (Tournament tournament) {
             this.dbContext.Tournament.Add (tournament);
-            return 1;
+            return this.dbContext.SaveChanges ();
         }
     }
 }

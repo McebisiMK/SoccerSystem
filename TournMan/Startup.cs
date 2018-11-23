@@ -22,7 +22,6 @@ namespace TournMan {
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices (IServiceCollection services) {
             services.AddCors (options => {
                 options.AddPolicy ("CorsPolicy",
@@ -33,18 +32,16 @@ namespace TournMan {
             });
 
             services.AddTransient<ITournamentRepository, TournamentPgRepository> ();
-            services.AddTransient<ITournamentService, TournamentService> ();
-            services.AddTransient<IRegistrationService, RegistrationService> ();
+            services.AddTransient<ITeamRepository, TeamPgRepository> ();
             services.AddTransient<IRegistrationRepository, RegistrationRepository> ();
 
-            // services.AddEntityFrameworkNpgsql().AddDbContext<PgContext>(opt =>
-            // {
-            //      opt.UseNpgsql(Configuration.GetConnectionString("pg"));
-            // });
+            services.AddTransient<ITournamentService, TournamentService> ();
+            services.AddTransient<IRegistrationService, RegistrationService> ();
+            services.AddTransient<ITeamService, TeamService> ();
+
             services.AddMvc ();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure (IApplicationBuilder app, IHostingEnvironment env) {
             if (env.IsDevelopment ()) {
                 app.UseDeveloperExceptionPage ();
