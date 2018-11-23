@@ -14,46 +14,4 @@ namespace TournMan.Repositories
         List<Team> FindByCoach(string coach);
         List<Team> FindAll();
     }
-
-    public class TeamRepository : ITeamRepository
-    {
-        List<Team> team;
-        private string connectionString = "Data Source=LAPTOP-MCEBISI\\SQLEXPRESS01;Integrated Security=True;Initial Catalog=Tournament";
-        public TeamRepository() { }
-        public int Save(Team team)
-        {
-            string sql = "Insert into Team values (@Name, @Coach,@Captain);";
-            using (var connection = new SqlConnection(connectionString))
-            {
-                return connection.Execute(sql, team);
-            }
-        }
-
-        public List<Team> FindByName(string name)
-        {
-            using (var connection = new SqlConnection(connectionString))
-            {
-                team = connection.Query<Team>($"SELECT * FROM Tournament.dbo.Team where name = '{name}'").ToList();
-            }
-            return team;
-        }
-
-        public List<Team> FindByCoach(string coach)
-        {
-            using (var connection = new SqlConnection(connectionString))
-            {
-                team = connection.Query<Team>($"Select * from Tournament.dbo.Team where coach = '{coach}'").ToList();
-            }
-            return team;
-        }
-
-        public List<Team> FindAll()
-        {
-            using (var connection = new SqlConnection(connectionString))
-            {
-                team = connection.Query<Team>("SELECT * FROM Tournament.dbo.Team").ToList();
-            }
-            return team;
-        }
-    }
 }

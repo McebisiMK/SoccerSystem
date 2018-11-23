@@ -17,34 +17,34 @@ namespace TournMan.Controllers {
         }
 
         [HttpGet]
-        public IEnumerable<Tournament> Get () {
-            return this.Tournamentservice.FindAll ();
+        public IEnumerable<Tournament> FindAll () {
+            return Tournamentservice.FindAll ();
         }
 
         [HttpGet ("find/by/name/{name}")]
         public IEnumerable<Tournament> FindByName (string name) {
-            return this.Tournamentservice.FindByName (name);
+            return Tournamentservice.FindByName (name);
         }
 
         [HttpGet ("find/by/id/{id}")]
         public IEnumerable<Tournament> FindById (int id) {
-            return this.Tournamentservice.FindById (id);
+            return Tournamentservice.FindById (id);
         }
 
         [HttpPost ("find/by/location")]
         public IEnumerable<Tournament> FindByLocation ([FromBody] string location) {
-            return this.Tournamentservice.FindByLocation (location);
+            return Tournamentservice.FindByLocation (location);
         }
 
         [HttpGet ("{year}/{month}/{day}")]
-        public List<Tournament> Get (int year, int month, int day) {
+        public IEnumerable<Tournament> FindByDate (int year, int month, int day) {
             var date = new DateTime (year, month, day);
-            return this.Tournamentservice.FindByDate (date);
+            return Tournamentservice.FindByDate (date);
         }
 
         [HttpPost]
-        public void Post ([FromBody] Tournament tournament) {
-            this.Tournamentservice.Save (tournament);
+        public void Save ([FromBody] Tournament tournament) {
+            Tournamentservice.Save (tournament);
         }
 
         [HttpDelete ("{id}")]

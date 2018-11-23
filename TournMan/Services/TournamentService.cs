@@ -9,8 +9,6 @@ namespace TournMan.Services
     {
         private ITournamentRepository tournamentRepository;
 
-        public ITournamentRepository TournamentRepository { get => tournamentRepository; set => tournamentRepository = value; }
-
         public TournamentService() { }
 
         public TournamentService(ITournamentRepository tournamentRepository)
