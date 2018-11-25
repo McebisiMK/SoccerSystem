@@ -11,5 +11,6 @@ namespace TournMan.Repositories
     {
         int Register(Registration registeredTeams);
         List<Registration> FindAll();
+        List<RegisteredTeam> GetRegisteredTeam(string tournamentId);
     }
 }

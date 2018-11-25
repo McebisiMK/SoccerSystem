@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using Dapper;
@@ -6,7 +7,7 @@ using TournMan.Models;
 
 namespace TournMan.Repositories
 {
-        public class RegistrationRepository : IRegistrationRepository
+    public class RegistrationRepository : IRegistrationRepository
     {
         List<Registration> registeredTeams;
         private string connectionString = "Data Source=LAPTOP-MCEBISI\\SQLEXPRESS01;Integrated Security=True;Initial Catalog=Tournament";
@@ -28,6 +29,15 @@ namespace TournMan.Repositories
             {
                 var sql = "Insert into TournamentRegistration values (@TournamentId, @TeamId, @Amount)";
                 return connection.Execute(sql, registration);
+            }
+        }
+
+        public List<RegisteredTeam> GetRegisteredTeam(string tournamentId)
+        {
+            using (var connection = new SqlConnection(connectionString))
+            {
+                return connection.Query<RegisteredTeam>("Registrations",
+                new { TournamentId = tournamentId }, commandType: CommandType.StoredProcedure).ToList();
             }
         }
     }

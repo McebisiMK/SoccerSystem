@@ -33,6 +33,7 @@ namespace TournMan {
 
             // services.AddTransient<ITournamentRepository, TournamentPgRepository> ();
             // services.AddTransient<ITeamRepository, TeamPgRepository> ();
+            services.AddTransient<ITeamRepository, TeamRepository> ();
             
             services.AddTransient<IRegistrationRepository, RegistrationRepository> ();
             services.AddTransient<ITournamentRepository, TournamentRepository> ();

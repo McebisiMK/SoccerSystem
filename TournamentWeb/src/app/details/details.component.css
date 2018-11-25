@@ -1,7 +1,16 @@
 .detail {
-  background-color: beige;
-  width: 50%;
+  width: 100%;
   border: 1px solid silver;
+}
+
+.tournament-info {
+  font-size: 30pt;
+  font-weight: bolder;
+  text-align: center;
+}
+
+.heading{
+  text-align: center;
 }
 
 .teams, .teams>.registered, .teams>.registration {
@@ -10,13 +19,67 @@
 }
 
 .teams>.registered, .teams>.registration {
-  width: 50%;
-}
+  width: 48%;
+  margin: 15px;
+ }
+
+ .teams>.registration,.teams>.registered {
+  flex-direction: column;
+ }
 
 .teams {
   flex-direction: row;
   justify-content: space-between;
   width: 98%;
-  margin: 1px;
-  padding: 1px;
+}
+
+
+.team{
+   display: flex;
+   flex-direction: row;
+}
+.team-info{
+  width: 85%;
+   font-size:  14pt;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.team-info-controls{
+  width: 15%;
+   display: flex;
+   justify-content: flex-end;
+}
+
+.team-info-controls>button{
+    cursor: pointer;
+}
+
+.team-info-controls>button:hover{
+  color: red;
+  background-color: rgb(236, 135, 135);
+}
+li{
+  background-color: springgreen;
+}
+
+.footer{
+  font-size: 9pt;
+  display: flex;
+   width: 60%;
+   margin-left: auto;
+   margin-right: auto;
+   flex-wrap: wrap;
+  justify-content: space-around;
+   border-radius: 10px;
+  background-color: rgb(252, 243, 252);
+}
+.tournament-info>.footer{
+  background-color: inherit;
+}
+
+.footer>span>.label{
+  font-weight: bolder;
 }

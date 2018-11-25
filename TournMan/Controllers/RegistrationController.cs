@@ -27,5 +27,12 @@ namespace TournMan.Controllers
         {
             return registrationService.Register(registration);
         }
+
+        
+        [HttpGet("{tournamentId}")]
+        public IEnumerable<RegisteredTeam> RegisteredTeam(string tournamentId)
+        {
+            return registrationService.RegisteredTeam(tournamentId);
+        }
     }
 }

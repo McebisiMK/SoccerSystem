@@ -28,6 +28,11 @@ namespace TournMan.Services
             return 0;
         }
 
+        public IEnumerable<RegisteredTeam> RegisteredTeam(string tournamentId)
+        {
+            return registrationRepository.GetRegisteredTeam(tournamentId);
+        }
+
         private bool IsValid(Registration registeringTeams)
         {
             return !(registeringTeams.Amount < 0);

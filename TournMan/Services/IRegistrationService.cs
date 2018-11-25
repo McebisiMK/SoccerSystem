@@ -5,6 +5,6 @@ namespace TournMan.Services {
     public interface IRegistrationService {
         int Register (Registration registeredTeams);
         List<Registration> FindAll ();
-
+        IEnumerable<RegisteredTeam> RegisteredTeam(string tournamentId);
     }
 }
