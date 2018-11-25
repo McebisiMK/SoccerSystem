@@ -21,7 +21,12 @@
 .teams>.registered, .teams>.registration {
   width: 48%;
   margin: 15px;
- }
+  max-height: 400px;
+  background-color:bisque;
+
+  display: block;
+  overflow-y: scroll;
+  }
 
  .teams>.registration,.teams>.registered {
   flex-direction: column;

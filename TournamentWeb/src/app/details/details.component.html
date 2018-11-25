@@ -22,7 +22,8 @@
       <div>
         <div>
           <div class="form-group">
-            <select class="form-control" [(ngModel)]="selectedTeamId">
+              <label for="team">Team</label>
+            <select id="team" class="form-control" [(ngModel)]="selectedTeamId">
               <option value="">Select Team</option>
               <option *ngFor="let team of teams" value="{{team.id}}"
                 >{{ team.name }} ~ {{ team.coach }}</option
@@ -68,7 +69,6 @@
           </div>
           <div class="team-info-controls">
             <button class="fa fa-trash fa-2x"></button>
-            <!-- <button class="fa fa-edit fa-2x"></button> -->
           </div>
         </li>
       </ul>
