@@ -1,11 +1,11 @@
-.capture-team,
-.capture-team {
+.capture-tournament,
+.tournament-capture {
   display: flex;
   border: 1px solid wheat;
 }
 
-.capture-team > .captured,
-.capture-team > .team-capture {
+.capture-tournament > .captured,
+.capture-tournament > .tournament-capture {
   width: 48%;
   margin: 15px;
   max-height: 400px;
@@ -18,7 +18,7 @@
   text-align: center;
 }
 
-.team-info {
+.tournament-info {
   width: 85%;
   font-size: 14pt;
   text-align: center;

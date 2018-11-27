@@ -1,0 +1,70 @@
+<div class="capture-tournament">
+  <section class="tournament-capture">
+    <div class="heading"><h3>Tournamet Capturing</h3></div>
+
+    <div>
+      <div>
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            [(ngModel)]="name"
+            class="form-control"
+            id="name"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="location">Location</label>
+          <input
+            type="text"
+            [(ngModel)]="location"
+            class="form-control"
+            id="location"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="startDate">Start Date</label>
+          <input
+            type="date"
+            [(ngModel)]="startDate"
+            class="form-group"
+            id="startDate"
+          />
+        </div>
+
+        <div class="form-group">
+          <input
+            type="button"
+            class="btn btn-primary"
+            (click)="SaveTournament()"
+            value="Submit"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="captured">
+    <div class="heading"><h3>Captured Tournaments</h3></div>
+    <ul *ngFor="let tournament of tournaments" class="list-group">
+      <li
+        class="list-group-item list-group-item-action tournament"
+        (click)="loadDetails(tournament.id)"
+      >
+        <div class="tournament-info">{{ tournament.name }}</div>
+        <div class="footer">
+          <span
+            ><span class="label">Location</span>:
+            {{ tournament.location }}</span
+          >
+          <span
+            ><span class="label">Start Date</span>:
+            {{ tournament.startDate }}</span
+          >
+        </div>
+      </li>
+    </ul>
+  </section>
+</div>

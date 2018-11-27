@@ -18,11 +18,11 @@
 
   <div class="teams">
     <section class="registration">
-      <div class="heading"><h3>Add Teams</h3></div>
+      <div class="heading"><h3>Register Teams</h3></div>
       <div>
         <div>
           <div class="form-group">
-              <label for="team">Team</label>
+            <label for="team">Team</label>
             <select id="team" class="form-control" [(ngModel)]="selectedTeamId">
               <option value="">Select Team</option>
               <option *ngFor="let team of teams" value="{{team.id}}"
@@ -58,12 +58,12 @@
       <ul *ngFor="let team of registeredTeams" class="list-group">
         <li class="list-group-item list-group-item-action team">
           <div class="team-info">
-            {{ team.name }} x
+            {{ team.name }}
             <div class="footer">
               <span><span class="label">Coach</span> : {{ team.coach }}</span>
               <span
-                ><span class="label">Captain</span> : {{ team.captain }}
-              </span>
+                ><span class="label">Captain</span> : {{ team.captain }}</span
+              >
               <span><span class="label">Paid</span> : {{ team.amount }}</span>
             </div>
           </div>

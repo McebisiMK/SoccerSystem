@@ -1,22 +1,60 @@
-<div style="width: 50%">
-  <div class="form-group">
-    <label for="name">Name</label>
-    <input type="text" [(ngModel)]="name" class="form-control" id="name">
-  </div>
+<div class="capture-team">
+  <section class="team-capture">
+    <div class="heading"><h3>Team Capturing</h3></div>
+    <div>
+      <div>
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            [(ngModel)]="name"
+            class="form-control"
+            id="name"
+          />
+        </div>
 
-  <div class="form-group">
-    <label for="coach">Coach</label>
-    <input type="text" [(ngModel)]="coach" class="form-control" id="coach">
-  </div>
+        <div class="form-group">
+          <label for="coach">Coach</label>
+          <input
+            type="text"
+            [(ngModel)]="coach"
+            class="form-control"
+            id="coach"
+          />
+        </div>
 
-  <div class="form-group">
-    <label for="captain">Captain</label>
-    <input type="text" [(ngModel)]="captain" class="form-control" id="captain">
-  </div>
+        <div class="form-group">
+          <label for="captain">Captain</label>
+          <input
+            type="text"
+            [(ngModel)]="captain"
+            class="form-control"
+            id="captain"
+          />
+        </div>
 
-  <div class="form-group">
-    <input type="button" class="btn btn-primary" (click)="SaveTeam()" value="Submit">
-  </div>
+        <div class="form-group">
+          <input
+            type="button"
+            class="btn btn-primary"
+            (click)="SaveTeam()"
+            value="Submit"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
 
-  {{name}} | {{coach}} | {{captain}}
+  <section class="captured">
+    <div class="heading"><h3>Captured Teams</h3></div>
+    <ul *ngFor="let team of teams" class="list-group">
+      <li class="list-group-item list-group-item-action team">
+        <div class="team-info">{{ team.name }}</div>
+        <div class="footer">
+          <span><span class="label">Coach</span> : {{ team.coach }}</span>
+          <span><span class="label">Captain</span>: {{ team.captain }}</span>
+        </div>
+      </li>
+    </ul>
+  </section>
 </div>

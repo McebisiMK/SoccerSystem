@@ -7,30 +7,34 @@
   font-size: 30pt;
   font-weight: bolder;
   text-align: center;
+  background-color: aquamarine;
 }
 
-.heading{
+.heading {
   text-align: center;
 }
 
-.teams, .teams>.registered, .teams>.registration {
+.teams,
+.teams > .registered,
+.teams > .registration {
   display: flex;
   border: 1px solid wheat;
 }
 
-.teams>.registered, .teams>.registration {
+.teams > .registered,
+.teams > .registration {
   width: 48%;
   margin: 15px;
   max-height: 400px;
-  background-color:bisque;
-
+  background-color: bisque;
   display: block;
   overflow-y: scroll;
-  }
+}
 
- .teams>.registration,.teams>.registered {
+.teams > .registration,
+.teams > .registered {
   flex-direction: column;
- }
+}
 
 .teams {
   flex-direction: row;
@@ -38,53 +42,52 @@
   width: 98%;
 }
 
-
-.team{
-   display: flex;
-   flex-direction: row;
+.team {
+  display: flex;
+  flex-direction: row;
 }
-.team-info{
+.team-info {
   width: 85%;
-   font-size:  14pt;
+  font-size: 14pt;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.team-info-controls{
+.team-info-controls {
   width: 15%;
-   display: flex;
-   justify-content: flex-end;
+  display: flex;
+  justify-content: flex-end;
 }
 
-.team-info-controls>button{
-    cursor: pointer;
+.team-info-controls > button {
+  cursor: pointer;
 }
 
-.team-info-controls>button:hover{
+.team-info-controls > button:hover {
   color: red;
   background-color: rgb(236, 135, 135);
 }
-li{
-  background-color: springgreen;
+li {
+  background-color: darkseagreen;
 }
 
-.footer{
+.footer {
   font-size: 9pt;
   display: flex;
-   width: 60%;
-   margin-left: auto;
-   margin-right: auto;
-   flex-wrap: wrap;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  flex-wrap: wrap;
   justify-content: space-around;
-   border-radius: 10px;
+  border-radius: 10px;
   background-color: rgb(252, 243, 252);
 }
-.tournament-info>.footer{
+.tournament-info > .footer {
   background-color: inherit;
 }
 
-.footer>span>.label{
+.footer > span > .label {
   font-weight: bolder;
 }
