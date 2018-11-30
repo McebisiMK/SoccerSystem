@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using TournMan.Models;
 using TournMan.Repositories;
-using TournMan.Services;
+using TournMan.Interfaces;
 
 namespace TournMan.Controllers
 {

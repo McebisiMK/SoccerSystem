@@ -10,6 +10,7 @@ using Dapper;
 using TournMan.Models;
 using TournMan.Services;
 using TournMan.Repositories;
+using TournMan.Interfaces;
 namespace TournMan.Tests.Services
 {
     public class TournamentServiceTests

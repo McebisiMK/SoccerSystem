@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using TournMan.Models;
+using TournMan.Interfaces;
 
 namespace TournMan.Repositories {
     public class TeamPgRepository : ITeamRepository {

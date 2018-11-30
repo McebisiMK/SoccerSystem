@@ -7,6 +7,7 @@ using TournMan.Models;
 using TournMan.Repositories;
 using TournMan.Services;
 using Xunit;
+using TournMan.Interfaces;
 
 namespace TournMan.Tests.Services
 {

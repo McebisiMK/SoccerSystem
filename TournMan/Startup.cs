@@ -13,6 +13,7 @@ using TournMan.Controllers;
 using TournMan.Models;
 using TournMan.Repositories;
 using TournMan.Services;
+using TournMan.Interfaces;
 
 namespace TournMan {
     public class Startup {
@@ -34,7 +35,6 @@ namespace TournMan {
             // services.AddTransient<ITournamentRepository, TournamentPgRepository> ();
             // services.AddTransient<ITeamRepository, TeamPgRepository> ();
             services.AddTransient<ITeamRepository, TeamRepository> ();
-            
             services.AddTransient<IRegistrationRepository, RegistrationRepository> ();
             services.AddTransient<ITournamentRepository, TournamentRepository> ();
             services.AddTransient<ITournamentService, TournamentService> ();

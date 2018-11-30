@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using TournMan.Models;
 
-namespace TournMan.Services
+namespace TournMan.Interfaces
 {
     public interface ITeamService
     {

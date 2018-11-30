@@ -6,6 +6,7 @@ using TournMan.Models;
 using TournMan.Services;
 using Xunit;
 using FluentAssertions;
+using TournMan.Interfaces;
 
 namespace TournMan.Tests.Services
 {

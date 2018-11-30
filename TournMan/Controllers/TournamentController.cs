@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TournMan.Models;
 using TournMan.Repositories;
-using TournMan.Services;
+using TournMan.Interfaces;
 
 namespace TournMan.Controllers {
     [Route ("api/[controller]")]

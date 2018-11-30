@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using TournMan.Models;
 
-namespace TournMan.Services {
+namespace TournMan.Interfaces {
     public interface ITournamentService {
         int Save (Tournament tournament);
         List<Tournament> FindAll ();

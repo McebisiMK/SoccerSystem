@@ -5,7 +5,7 @@ using System.Linq;
 using Dapper;
 using TournMan.Models;
 
-namespace TournMan.Repositories
+namespace TournMan.Interfaces
 {
     public interface IRegistrationRepository
     {

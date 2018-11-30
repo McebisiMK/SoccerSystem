@@ -4,12 +4,13 @@ using System.Data.SqlClient;
 using System.Linq;
 using Dapper;
 using TournMan.Models;
+using TournMan.Interfaces;
 
 namespace TournMan.Repositories
 {
     public class RegistrationRepository : IRegistrationRepository
     {
-        List<Registration> registeredTeams;
+        List<Registration> registration;
         private string connectionString = "Data Source=LAPTOP-MCEBISI\\SQLEXPRESS01;Integrated Security=True;Initial Catalog=Tournament";
         public RegistrationRepository() { }
 
@@ -18,9 +19,9 @@ namespace TournMan.Repositories
             using (var connection = new SqlConnection(connectionString))
             {
                 var sql = "Select * from Tournament.dbo.TournamentRegistration";
-                registeredTeams = connection.Query<Registration>(sql).ToList();
+                registration = connection.Query<Registration>(sql).ToList();
             }
-            return registeredTeams;
+            return registration;
         }
 
         public int Register(Registration registration)

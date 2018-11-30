@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using TournMan.Models;
 using TournMan.Repositories;
+using TournMan.Interfaces;
 
 namespace TournMan.Services
 {
